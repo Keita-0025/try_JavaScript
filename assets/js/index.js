@@ -20,7 +20,7 @@ const displayNumbers = () => {
 
 displayNumbers();
 
-//宝探しゲーム
+//応用 宝探しゲーム
 
 const hiddenTreasureStart = (count) => {
     console.log(`宝の数:${count}`)
@@ -91,4 +91,39 @@ const hiddenTreasureStart = (count) => {
     })
 }
 
+//Q2 配列の最大値を見つける
+const numbersArray = [];
+
+const addLargestNumber = (event) => {
+    event.preventDefault();
+    const inputElement = document.getElementById('numberInput');
+    const inputValue = parseInt(inputElement.value, 10);
+
+    if (!isNaN(inputValue) && numbersArray.length < 5) {
+        numbersArray.push(inputValue);
+        inputElement.value = '';
+        console.log(numbersArray)
+
+        if (numbersArray.length === 5) {
+            const maxNumber = Math.max(...numbersArray);
+            document.querySelector('.largestNumber-item').textContent = `最大値:${maxNumber}`
+        }
+
+    } else if (numbersArray.length >= 5) {
+        alert('最大5個まで登録できます。');
+    } else {
+        alert('半角の数字のみ入力可能です。有効な数字を再入力してください。')
+    }
+}
+
+const resetArray = () => {
+    numbersArray.length = 0;
+    document.querySelector('.largestNumber-item').textContent = '最大値'; // 表示をリセット
+    document.getElementById('numberInput').value = ''; // 入力フィールドをクリア
+    console.log('配列がリセットされました:', numbersArray);
+
+}
+
+document.querySelector(".numberArrayReset").addEventListener('click', resetArray);
+document.getElementById('submitNumber').addEventListener('click', addLargestNumber)
 
