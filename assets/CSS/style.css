@@ -1,0 +1,13 @@
+/* .numberDisplay {
+    display: grid;
+    grid-template-columns: repeat(10, auto);
+    gap: 5px;
+}
+.numberDisplay div {
+    display: contents;
+}
+.numberDisplay span {
+    padding: 5px;
+    border: 1px solid #ccc;
+    text-align: center;
+} */
